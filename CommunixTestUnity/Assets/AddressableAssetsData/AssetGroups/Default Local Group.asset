@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: Assets/Project/Content/GameDomain/ScreensDomain/BattleDomain/Prefabs/Battle.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7b30e10dfafb15142ab28be67a9a5d2a
+    m_Address: Assets/Project/Content/GameDomain/ScreensDomain/BattleDomain/Prefabs/BattleCanvas.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a4e3571bda28de44884dd40f9f60f661, type: 2}
   m_SchemaSet:
