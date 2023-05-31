@@ -9,11 +9,11 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs
     {
         public override void InstallBindings()
         {
-            // Container.Bind<ISystem>().To<MoveSystem>().AsSingle();
+            Container.Bind<ISystem>().To<MoveSystem>().AsSingle();
+            Container.Bind<ISystem>().To<AutoSwitchMoveDirectionSystem>().AsSingle();
             // Container.Bind<ISystem>().To<InputSystem>().AsSingle();
             // Container.Bind<ISystem>().To<PlayerCreatorSystem>().AsSingle();
             // Container.Bind<ISystem>().To<EnemyCreatorSystem>().AsSingle();
-            // Container.Bind<ISystem>().To<SwitchMoveDirectionSystem>().AsSingle();
             // Container.Bind<ISystem>().To<ViewSystem>().AsSingle();
             Container.Bind<ISystem>().To<JumpSystem>().AsSingle();
             // Container.Bind<ISystem>().To<GameoverSystem>().AsSingle();

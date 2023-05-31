@@ -2,11 +2,11 @@
 
 namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Zone
 {
-    public class WallComponentRegister : ComponentRegister
+    public class LandWallComponentRegister : ComponentRegister
     {
         public override void Register(IEntity entity)
         {
-            entity.Replace<WallComponent>();
+            entity.Replace<LandWallComponent>();
         }
     }
 }

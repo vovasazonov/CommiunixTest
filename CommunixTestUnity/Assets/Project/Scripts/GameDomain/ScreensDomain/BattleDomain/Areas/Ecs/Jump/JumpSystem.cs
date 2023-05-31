@@ -22,7 +22,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Jump
         {
             _jumpableFilter = world.GetFilter(matcher => matcher.Has<JumpableComponent>().Has<PositionComponent>().Has<JumpForceComponent>());
             _jumpingFilter = world.GetFilter(matcher => matcher.Has<JumpingComponent>().Has<PositionComponent>().Has<JumpForceComponent>());
-            _wallFilter = world.GetFilter(matcher => matcher.Has<WallComponent>().Has<ProportionComponent>().Has<PositionComponent>());
+            _wallFilter = world.GetFilter(matcher => matcher.Has<LandWallComponent>().Has<ProportionComponent>().Has<PositionComponent>());
         }
 
         public void Update()
