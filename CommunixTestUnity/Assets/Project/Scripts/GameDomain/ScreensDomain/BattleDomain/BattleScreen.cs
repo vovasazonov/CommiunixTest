@@ -40,8 +40,6 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain
 
         protected override async UniTask InitializeScreenAsync()
         {
-            _disposables.Push(await _contentService.LoadAsync<GameObject>(BattleScreenContentIds.PlayerPrefab));
-            _disposables.Push(await _contentService.LoadAsync<GameObject>(BattleScreenContentIds.EnemyPrefab));
         }
 
         protected override UniTask DisposeScreenAsync()

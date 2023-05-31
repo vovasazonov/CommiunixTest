@@ -1,3 +1,5 @@
+using Project.CoreDomain;
+using Project.GameDomain.ScreensDomain.MainDomain.Areas.Menu.View;
 using Zenject;
 
 namespace Project.GameDomain.ScreensDomain.MainDomain
@@ -14,7 +16,7 @@ namespace Project.GameDomain.ScreensDomain.MainDomain
 
         private void BindPresenters()
         {
-
+            Container.Bind<IPresenter>().To<MenuPresenter>().AsSingle();
         }
 
         private void BindModels()

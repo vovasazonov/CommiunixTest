@@ -1,14 +1,22 @@
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Project.CoreDomain;
 using Project.CoreDomain.Services.Screen;
 
 namespace Project.GameDomain.ScreensDomain.MainDomain
 {
     public class MainScreen : Screen<MainScreen>
     {
+        private readonly List<IPresenter> _presenters;
         protected override string ScreenId => Id;
 
         public static string Id => "MainScreen";
         public override bool IsDisposeOnSwitch => false;
+
+        public MainScreen(List<IPresenter> presenters)
+        {
+            _presenters = presenters;
+        }
 
         public override UniTask ShowAsync()
         {
@@ -20,14 +28,20 @@ namespace Project.GameDomain.ScreensDomain.MainDomain
             return UniTask.CompletedTask;
         }
 
-        protected override UniTask InitializeScreenAsync()
+        protected override async UniTask InitializeScreenAsync()
         {
-            return UniTask.CompletedTask;
+            foreach (var presenter in _presenters)
+            {
+                await presenter.InitializeAsync();
+            }
         }
 
-        protected override UniTask DisposeScreenAsync()
+        protected override async UniTask DisposeScreenAsync()
         {
-            return UniTask.CompletedTask;
+            foreach (var presenter in _presenters)
+            {
+                await presenter.DisposeAsync();
+            }
         }
     }
 }
