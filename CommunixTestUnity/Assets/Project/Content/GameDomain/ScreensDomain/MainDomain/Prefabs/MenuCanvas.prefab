@@ -672,6 +672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelsView: {fileID: 6233553674183253362}
   _playButton: {fileID: 5790826238785174993}
+  _multiplayerToggle: {fileID: 6871696979710164958}
 --- !u!1 &5790826238041207964
 GameObject:
   m_ObjectHideFlags: 0

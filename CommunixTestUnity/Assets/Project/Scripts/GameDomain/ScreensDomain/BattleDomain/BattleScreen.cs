@@ -1,70 +1,47 @@
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Project.CoreDomain.Services.Content;
-using Project.CoreDomain.Services.Engine;
+using Project.CoreDomain;
 using Project.CoreDomain.Services.Screen;
-using UnityEngine;
 
 namespace Project.GameDomain.ScreensDomain.BattleDomain
 {
     public class BattleScreen : Screen<BattleScreen>
     {
-        private readonly IContentService _contentService;
-        private readonly IEngineService _engineService;
+        private readonly List<IPresenter> _presenters;
         protected override string ScreenId => Id;
 
         public static string Id => "BattleScreen";
         public override bool IsDisposeOnSwitch => false;
 
-        public BattleScreen(
-            IContentService contentService,
-            IEngineService engineService
-        )
+        public BattleScreen(List<IPresenter> presenters)
         {
-            _contentService = contentService;
-            _engineService = engineService;
+            _presenters = presenters;
         }
 
         public override UniTask ShowAsync()
         {
-            AddListeners();
-            
             return UniTask.CompletedTask;
         }
 
         public override UniTask HideAsync()
         {
-            RemoveListeners();
-            
             return UniTask.CompletedTask;
         }
 
         protected override async UniTask InitializeScreenAsync()
         {
+            foreach (var presenter in _presenters)
+            {
+                await presenter.InitializeAsync();
+            }
         }
 
-        protected override UniTask DisposeScreenAsync()
+        protected override async UniTask DisposeScreenAsync()
         {
-            return UniTask.CompletedTask;
-        }
-
-        private void AddListeners()
-        {
-            _engineService.Updating += OnUpdating;
-            _engineService.FixedUpdating += OnFixedUpdating;
-        }
-
-        private void RemoveListeners()
-        {
-            _engineService.Updating -= OnUpdating;
-            _engineService.FixedUpdating -= OnFixedUpdating;
-        }
-
-        private void OnUpdating()
-        {
-        }
-
-        private void OnFixedUpdating()
-        {
+            foreach (var presenter in _presenters)
+            {
+                await presenter.DisposeAsync();
+            }
         }
     }
 }

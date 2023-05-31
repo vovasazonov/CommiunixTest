@@ -1,3 +1,5 @@
+using Project.CoreDomain;
+using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Battle.Presenter;
 using Zenject;
 
 namespace Project.GameDomain.ScreensDomain.BattleDomain
@@ -14,7 +16,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain
 
         private void BindPresenters()
         {
-
+            Container.Bind<IPresenter>().To<BattlePresenter>().AsSingle();
         }
 
         private void BindModels()
