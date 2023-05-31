@@ -3,7 +3,7 @@
 namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Zone
 {
     [Component]
-    public class ZoneComponent
+    public class WallComponent
     {
     }
 }
