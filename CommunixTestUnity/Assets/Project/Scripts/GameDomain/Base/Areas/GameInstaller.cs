@@ -1,5 +1,6 @@
 ﻿using Project.GameDomain.Areas.Levels.Model;
 using Project.GameDomain.ScreensDomain.MainDomain.Areas.Multiplayer.Model;
+using Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Menu.Input.Model;
 using Zenject;
 
 namespace Project.GameDomain.Areas
@@ -10,6 +11,7 @@ namespace Project.GameDomain.Areas
         {
             Container.BindInterfacesTo<LevelsModel>().AsSingle();
             Container.BindInterfacesTo<MultiplayerModel>().AsSingle();
+            Container.BindInterfacesTo<InputModel>().AsSingle();
         }
     }
 }
