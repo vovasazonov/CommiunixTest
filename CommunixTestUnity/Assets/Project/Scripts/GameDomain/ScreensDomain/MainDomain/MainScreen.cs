@@ -11,7 +11,7 @@ namespace Project.GameDomain.ScreensDomain.MainDomain
         protected override string ScreenId => Id;
 
         public static string Id => "MainScreen";
-        public override bool IsDisposeOnSwitch => false;
+        public override bool IsDisposeOnSwitch => true;
 
         public MainScreen(List<IPresenter> presenters)
         {

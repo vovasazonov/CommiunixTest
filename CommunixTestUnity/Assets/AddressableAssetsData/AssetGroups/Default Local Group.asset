@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 797093bc11a16b2478cfd1ff76bc1f15
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 62eddb53d82e2654cbc522a9b137ab90
+    m_Address: Assets/Project/Content/GameDomain/ScreensDomain/MainDomain/Prefabs/MenuCanvas.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a4e3571bda28de44884dd40f9f60f661, type: 2}
   m_SchemaSet:
