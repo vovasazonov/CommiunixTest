@@ -1,6 +1,7 @@
 using Osyacat.Ecs.System;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Jump;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Move;
+using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Player;
 using Zenject;
 
 namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs
@@ -9,8 +10,9 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs
     {
         public override void InstallBindings()
         {
-            Container.Bind<ISystem>().To<MoveSystem>().AsSingle();
+            Container.Bind<ISystem>().To<PlayerInputSystem>().AsSingle();
             Container.Bind<ISystem>().To<AutoSwitchMoveDirectionSystem>().AsSingle();
+            Container.Bind<ISystem>().To<MoveSystem>().AsSingle();
             // Container.Bind<ISystem>().To<InputSystem>().AsSingle();
             // Container.Bind<ISystem>().To<PlayerCreatorSystem>().AsSingle();
             // Container.Bind<ISystem>().To<EnemyCreatorSystem>().AsSingle();

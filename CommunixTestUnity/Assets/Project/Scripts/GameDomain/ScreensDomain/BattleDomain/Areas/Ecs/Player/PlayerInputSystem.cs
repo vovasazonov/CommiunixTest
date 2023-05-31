@@ -1,8 +1,9 @@
-﻿using System;
-using Osyacat.Ecs.System;
+﻿using Osyacat.Ecs.System;
 using Osyacat.Ecs.World;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Direction;
+using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Fire;
 using Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Menu.Input.Model;
+using UnityEngine;
 
 namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Player
 {
@@ -22,6 +23,24 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Player
             foreach (var player in _playerFilter)
             {
                 var playerInput = player.Get<PlayerComponent>().Id == 1 ? _inputModel.Player1 : _inputModel.Player2;
+
+                if (playerInput.IsLeft)
+                {
+                    player.Replace<DirectionComponent>().Value = Vector3.left;
+                }
+                else if (playerInput.IsRight)
+                {
+                    player.Replace<DirectionComponent>().Value = Vector3.right;
+                }
+                else
+                {
+                    player.Replace<DirectionComponent>().Value = Vector3.zero;
+                }
+
+                if (playerInput.IsFire)
+                {
+                    player.Replace<FireInputComponent>();
+                }
             }
         }
     }

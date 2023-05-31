@@ -23,6 +23,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Move
         {
             foreach (var movable in _movableFilter)
             {
+                var movableDirection = movable.Get<DirectionComponent>().Value;
                 var movablePosition = movable.Get<PositionComponent>().Value;
                 var movableProportion = movable.Get<ProportionComponent>();
                 var movableX = movablePosition.x;
@@ -39,7 +40,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Move
 
                     if (movableX > wallLeftWidthPosition)
                     {
-                        if (movableLeftWidthPosition <= wallRightWidthPosition)
+                        if (movableLeftWidthPosition <= wallRightWidthPosition && movableDirection == Vector3.left)
                         {
                             if (!movable.Contains<AutoSwitchableDirectionMoveComponent>())
                             {
@@ -51,7 +52,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Move
                             }
                         }
                     }
-                    else if (movableX < wallRightWidthPosition)
+                    else if (movableX < wallRightWidthPosition && movableDirection == Vector3.right)
                     {
                         if (movableRightWidthPosition >= wallLeftWidthPosition)
                         {
