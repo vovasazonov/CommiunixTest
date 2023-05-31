@@ -1,5 +1,6 @@
 using Project.CoreDomain;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Battle.Presenter;
+using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs;
 using Zenject;
 
 namespace Project.GameDomain.ScreensDomain.BattleDomain
@@ -10,8 +11,15 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain
         {
             Container.Bind<BattleScreen>().AsSingle();
             
+            BindEcs();
             BindModels();
             BindPresenters();
+        }
+        
+        private void BindEcs()
+        {
+            EcsArchitectureInstaller.Install(Container);
+            EcsInstaller.Install(Container);
         }
 
         private void BindPresenters()
