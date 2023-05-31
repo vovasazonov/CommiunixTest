@@ -15,7 +15,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain
         protected override string ScreenId => Id;
 
         public static string Id => "BattleScreen";
-        public override bool IsDisposeOnSwitch => false;
+        public override bool IsDisposeOnSwitch => true;
 
         public BattleScreen(
             List<IPresenter> presenters,
