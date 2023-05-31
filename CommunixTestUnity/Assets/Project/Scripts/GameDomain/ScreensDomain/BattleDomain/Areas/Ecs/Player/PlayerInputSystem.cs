@@ -2,7 +2,7 @@
 using Osyacat.Ecs.World;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Direction;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Fire;
-using Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Menu.Input.Model;
+using Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Input.Model;
 using UnityEngine;
 
 namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Player

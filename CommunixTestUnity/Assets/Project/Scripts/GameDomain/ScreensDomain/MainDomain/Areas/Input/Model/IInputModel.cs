@@ -1,4 +1,4 @@
-﻿namespace Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Menu.Input.Model
+﻿namespace Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Input.Model
 {
     public interface IInputModel
     {

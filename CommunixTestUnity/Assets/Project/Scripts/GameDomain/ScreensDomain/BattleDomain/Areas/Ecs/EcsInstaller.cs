@@ -10,6 +10,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs
     {
         public override void InstallBindings()
         {
+            Container.Bind<ISystem>().To<MultiplayerInitializerSystem>().AsSingle();
             Container.Bind<ISystem>().To<PlayerInputSystem>().AsSingle();
             Container.Bind<ISystem>().To<AutoSwitchMoveDirectionSystem>().AsSingle();
             Container.Bind<ISystem>().To<MoveSystem>().AsSingle();

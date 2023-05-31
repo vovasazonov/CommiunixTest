@@ -1,7 +1,7 @@
 ﻿using Project.CoreDomain.Services.Engine;
 using UnityEngine;
 
-namespace Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Menu.Input.Model
+namespace Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Input.Model
 {
     public class InputModel : IInputModel
     {

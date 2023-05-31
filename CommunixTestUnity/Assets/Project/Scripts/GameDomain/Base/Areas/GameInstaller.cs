@@ -1,6 +1,6 @@
 ﻿using Project.GameDomain.Areas.Levels.Model;
 using Project.GameDomain.ScreensDomain.MainDomain.Areas.Multiplayer.Model;
-using Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Menu.Input.Model;
+using Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Input.Model;
 using Zenject;
 
 namespace Project.GameDomain.Areas
