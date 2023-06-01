@@ -33,7 +33,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Player
                 if (id == 2 && !_multiplayerModel.IsMultiplayer)
                 {
                     var view = player.Get<ViewComponent>().Value;
-                    GameObject.DestroyImmediate(((EntityView)view).gameObject);
+                    Object.DestroyImmediate(((EntityView)view).gameObject);
                     player.Destroy();
                 }
             }

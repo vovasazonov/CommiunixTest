@@ -12,7 +12,7 @@ namespace Project.Scripts.GameDomain.ScreensDomain.MainDomain.Areas.Input.Model
         {
             Player1 = new(engineService)
             {
-                Fire = KeyCode.Space,
+                Fire = KeyCode.UpArrow,
                 Left = KeyCode.LeftArrow,
                 Right = KeyCode.RightArrow
             };
