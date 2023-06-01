@@ -8,7 +8,10 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Jump
         
         public override void Register(IEntity entity)
         {
-            entity.Replace<JumpForceComponent>().Value = JumpForce;
+            if (!entity.Contains<JumpForceComponent>())
+            {
+                entity.Replace<JumpForceComponent>().Value = JumpForce;
+            }
         }
     }
 }

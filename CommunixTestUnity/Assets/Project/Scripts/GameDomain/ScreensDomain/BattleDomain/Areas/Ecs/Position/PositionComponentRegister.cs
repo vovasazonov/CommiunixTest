@@ -6,7 +6,10 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Position
     {
         public override void Register(IEntity entity)
         {
-            entity.Replace<PositionComponent>().Value = transform.position;
+            if (!entity.Contains<PositionComponent>())
+            {
+                entity.Replace<PositionComponent>().Value = transform.position;
+            }
         }
     }
 }

@@ -9,7 +9,10 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Direction
         
         public override void Register(IEntity entity)
         {
-            entity.Replace<DirectionComponent>().Value = Direction;
+            if (!entity.Contains<DirectionComponent>())
+            {
+                entity.Replace<DirectionComponent>().Value = Direction;
+            }
         }
     }
 }

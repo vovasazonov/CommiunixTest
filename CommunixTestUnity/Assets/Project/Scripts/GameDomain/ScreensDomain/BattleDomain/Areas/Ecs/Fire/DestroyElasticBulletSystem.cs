@@ -3,7 +3,7 @@ using Osyacat.Ecs.Entity;
 using Osyacat.Ecs.System;
 using Osyacat.Ecs.World;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Direction;
-using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Player;
+using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Enemy;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Position;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Proportion;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Speed;
@@ -15,14 +15,14 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Fire
     public class DestroyElasticBulletSystem : IUpdateSystem
     {
         private readonly IFilter _bulletFilter;
-        private readonly IFilter _ballFilter;
+        private readonly IFilter _enemyFilter;
         private readonly List<IEntity> _buffer = new();
         private readonly IFilter _wallFilter;
 
         public DestroyElasticBulletSystem(IWorld world)
         {
             _bulletFilter = world.GetFilter(matcher => matcher.Has<BulletComponent>().Has<ElasticComponent>().Has<SpeedComponent>().Has<DirectionComponent>());
-            _ballFilter = world.GetFilter(matcher => matcher.Has<PositionComponent>().Has<ProportionComponent>().None<PlayerComponent>().None<LandWallComponent>().None<SideWallComponent>());
+            _enemyFilter = world.GetFilter(matcher => matcher.Has<PositionComponent>().Has<ProportionComponent>().Has<EnemyComponent>());
             _wallFilter = world.GetFilter(matcher => matcher.Has<LandWallComponent>());
         }
 
@@ -35,10 +35,10 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Fire
                 var isBulletDestroyed = false;
                 var elastic = bullet.Get<ElasticComponent>();
 
-                foreach (var ball in _ballFilter)
+                foreach (var enemy in _enemyFilter)
                 {
-                    var position = ball.Get<PositionComponent>().Value;
-                    var proportion = ball.Get<ProportionComponent>();
+                    var position = enemy.Get<PositionComponent>().Value;
+                    var proportion = enemy.Get<ProportionComponent>();
 
                     var isOnX = position.x + proportion.Width / 2 >= elastic.Start.x && position.x - proportion.Width / 2 <= elastic.Start.x;
                     var isOnY = position.y - proportion.Height / 2 <= elastic.End.y;
