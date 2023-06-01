@@ -9,6 +9,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs
     {
         [SerializeField] private EntityView _entityView;
         private IWorld _world;
+        private IEntity _entity;
 
         [Inject]
         private void Constructor(IWorld world)
@@ -16,9 +17,9 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs
             _world = world;
         }
         
-        private void Awake()
+        private void Start()
         {
-            var entity = _world.CreateEntity();
+            var entity = _entity ?? _world.CreateEntity();
             _entityView.Initialize(entity);
             var componentRegisters = GetComponents<ComponentRegister>();
             
@@ -29,6 +30,11 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs
                     componentRegister.Register(entity);
                 }
             }
+        }
+
+        public void InitializeEntity(IEntity entity)
+        {
+            _entity = entity;
         }
 
         private void OnDestroy()

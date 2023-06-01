@@ -8,16 +8,17 @@ using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Position;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Proportion;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Speed;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Zone;
-using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Fire
 {
-    public class DestroyElasticBulletSystem : IUpdateSystem
+    public class DestroyElasticBulletSystem : IUpdateSystem, ILateUpdateSystem
     {
         private readonly IFilter _bulletFilter;
         private readonly IFilter _enemyFilter;
         private readonly List<IEntity> _buffer = new();
         private readonly IFilter _wallFilter;
+        private readonly List<IEntity> _toDestroy = new();
 
         public DestroyElasticBulletSystem(IWorld world)
         {
@@ -43,11 +44,11 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Fire
                     var isOnX = position.x + proportion.Width / 2 >= elastic.Start.x && position.x - proportion.Width / 2 <= elastic.Start.x;
                     var isOnY = position.y - proportion.Height / 2 <= elastic.End.y;
 
-                    var isBallTrigger = isOnX && isOnY;
+                    var isEnemyTrigger = isOnX && isOnY;
 
-                    if (isBallTrigger)
+                    if (isEnemyTrigger)
                     {
-                        DestroyBullet(bullet);
+                        _toDestroy.Add(bullet);
                         isBulletDestroyed = true;
                         break;
                     }
@@ -64,7 +65,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Fire
                         
                         if (isOnY)
                         {
-                            DestroyBullet(bullet);
+                            _toDestroy.Add(bullet);
                             break;
                         }
                     }
@@ -76,8 +77,18 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Fire
         {
             var view = bullet.Get<ViewComponent>().Value;
             bullet.Get<ViewComponent>().Value.UnInitialize();
-            Object.DestroyImmediate(((EntityView)view).gameObject);
+            Object.Destroy(((EntityView)view).gameObject);
             bullet.Destroy();
+        }
+
+        public void LateUpdate()
+        {
+            foreach (var toDestroy in _toDestroy)
+            {
+                DestroyBullet(toDestroy);
+            }
+
+            _toDestroy.Clear();
         }
     }
 }

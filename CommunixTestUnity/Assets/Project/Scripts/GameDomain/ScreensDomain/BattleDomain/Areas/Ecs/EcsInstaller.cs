@@ -1,4 +1,5 @@
 using Osyacat.Ecs.System;
+using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Enemy;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Fire;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Jump;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Move;
@@ -11,13 +12,16 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs
     {
         public override void InstallBindings()
         {
+            Container.Bind<ISystem>().To<DestroyElasticBulletSystem>().AsSingle();
+            Container.Bind<ISystem>().To<EnemyDestroyerSystem>().AsSingle();
+            
             Container.Bind<ISystem>().To<MultiplayerInitializerSystem>().AsSingle();
             Container.Bind<ISystem>().To<PlayerInputSystem>().AsSingle();
             Container.Bind<ISystem>().To<AutoSwitchMoveDirectionSystem>().AsSingle();
             Container.Bind<ISystem>().To<MoveSystem>().AsSingle();
             Container.Bind<ISystem>().To<FireSystem>().AsSingle();
             Container.Bind<ISystem>().To<GrowElasticBulletSystem>().AsSingle();
-            Container.Bind<ISystem>().To<DestroyElasticBulletSystem>().AsSingle();
+
             // Container.Bind<ISystem>().To<InputSystem>().AsSingle();
             // Container.Bind<ISystem>().To<PlayerCreatorSystem>().AsSingle();
             // Container.Bind<ISystem>().To<EnemyCreatorSystem>().AsSingle();

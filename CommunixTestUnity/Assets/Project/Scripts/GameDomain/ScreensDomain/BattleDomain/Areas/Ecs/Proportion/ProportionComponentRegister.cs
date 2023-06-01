@@ -10,7 +10,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Proportion
         
         public override void Register(IEntity entity)
         {
-            if (!entity.Contains<PrefabComponent>())
+            if (!entity.Contains<ProportionComponent>())
             {
                 var proportion = entity.Replace<ProportionComponent>();
                 proportion.Height = _height;

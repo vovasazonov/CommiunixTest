@@ -931,9 +931,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 5487661551294811533, guid: 148b9bbf10aee834886a08907751023e, type: 3}
+      propertyPath: _parent
+      value: 
+      objectReference: {fileID: 7214714239498468464}
     - target: {fileID: 7671594885089803689, guid: 148b9bbf10aee834886a08907751023e, type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671594885089803689, guid: 148b9bbf10aee834886a08907751023e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671594885089803689, guid: 148b9bbf10aee834886a08907751023e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7671594885089803689, guid: 148b9bbf10aee834886a08907751023e, type: 3}
       propertyPath: m_LocalPosition.x

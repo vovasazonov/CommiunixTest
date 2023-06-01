@@ -28,5 +28,12 @@ namespace Project.CoreDomain.Services.View
             
             return new ContentDisposableView<T>(view.GetComponent<T>(), gameObjectKeeper);
         }
+
+        public IDisposableView<T> Create<T>(T prefab, Transform parent) where T : MonoBehaviour
+        {
+            var view = _diService.ContainerByScreenId[_screensService.Current].InstantiatePrefab(prefab.gameObject, parent);
+            
+            return new BuiltInDisposableView<T>(view.GetComponent<T>());
+        }
     }
 }
