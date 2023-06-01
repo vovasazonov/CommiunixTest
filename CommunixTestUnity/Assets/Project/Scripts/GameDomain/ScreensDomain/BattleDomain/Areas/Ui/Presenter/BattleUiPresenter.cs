@@ -3,6 +3,7 @@ using Project.CoreDomain;
 using Project.CoreDomain.Services.Engine;
 using Project.CoreDomain.Services.Screen;
 using Project.CoreDomain.Services.View;
+using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Battle.Model;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ui.Input.Presenter;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ui.View;
 using Project.GameDomain.ScreensDomain.MainDomain;
@@ -18,6 +19,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ui.Presenter
         private readonly IEngineService _engineService;
         private readonly IMultiplayerModel _multiplayerModel;
         private readonly IInputModel _inputModel;
+        private readonly IBattleModel _battleModel;
         private IDisposableView<IBattleUiView> _view;
         private IPresenter _inputPresenter;
 
@@ -26,7 +28,8 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ui.Presenter
             IScreensService screensService,
             IEngineService engineService,
             IMultiplayerModel multiplayerModel,
-            IInputModel inputModel
+            IInputModel inputModel,
+            IBattleModel battleModel
         )
         {
             _viewService = viewService;
@@ -34,12 +37,15 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ui.Presenter
             _engineService = engineService;
             _multiplayerModel = multiplayerModel;
             _inputModel = inputModel;
+            _battleModel = battleModel;
         }
 
         public async UniTask InitializeAsync()
         {
             _view = await _viewService.CreateAsync<BattleUiView>(BattleScreenContentIds.UiPrefab);
             _view.Value.MenuClicked += OnMenuClicked;
+            _battleModel.Finished += OnBattleFinished;
+            
             _inputPresenter = new UiInputPresenter(_engineService, _multiplayerModel, _view.Value.InputView, _inputModel);
             await _inputPresenter.InitializeAsync();
         }
@@ -47,8 +53,14 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ui.Presenter
         public async UniTask DisposeAsync()
         {
             _view.Value.MenuClicked -= OnMenuClicked;
+            _battleModel.Finished -= OnBattleFinished;
             _view.Dispose();
             await _inputPresenter.DisposeAsync();
+        }
+
+        private void OnBattleFinished()
+        {
+            _view.Value.SetActiveGameOver(_battleModel.IsGameOver);
         }
 
         private void OnMenuClicked()

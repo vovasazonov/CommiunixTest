@@ -1,4 +1,5 @@
 using Project.CoreDomain;
+using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Battle.Model;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Battle.Presenter;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ui.Presenter;
@@ -31,7 +32,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain
 
         private void BindModels()
         {
-
+            Container.BindInterfacesTo<BattleModel>().AsSingle();
         }
     }
 }

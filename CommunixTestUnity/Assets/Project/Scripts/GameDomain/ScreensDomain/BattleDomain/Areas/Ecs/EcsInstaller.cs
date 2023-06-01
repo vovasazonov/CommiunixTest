@@ -4,6 +4,7 @@ using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Fire;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Jump;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Move;
 using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Player;
+using Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Rule;
 using Zenject;
 
 namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs
@@ -27,6 +28,8 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs
             // Container.Bind<ISystem>().To<EnemyCreatorSystem>().AsSingle();
             // Container.Bind<ISystem>().To<ViewSystem>().AsSingle();
             Container.Bind<ISystem>().To<JumpSystem>().AsSingle();
+            Container.Bind<ISystem>().To<GameOverSystem>().AsSingle();
+            
             // Container.Bind<ISystem>().To<GameoverSystem>().AsSingle();
             // Container.Bind<ISystem>().To<PlayerJumpOnlyNearEnemySystem>().AsSingle();
             // Container.Bind<ISystem>().To<PlayerSideChangerSystem>().AsSingle();

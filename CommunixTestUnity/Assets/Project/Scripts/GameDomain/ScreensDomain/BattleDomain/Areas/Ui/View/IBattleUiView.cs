@@ -8,5 +8,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ui.View
         event Action MenuClicked;
         
         IUiInputView InputView { get; }
+
+        void SetActiveGameOver(bool isActive);
     }
 }
