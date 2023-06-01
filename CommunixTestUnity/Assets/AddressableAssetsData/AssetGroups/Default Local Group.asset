@@ -29,6 +29,18 @@ MonoBehaviour:
     m_Address: Assets/Project/Content/GameDomain/ScreensDomain/BattleDomain/Prefabs/BattleCanvas.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: b3d9e927ffec2ae419cf95b4c93d4f73
+    m_Address: Assets/Project/Content/GameDomain/ScreensDomain/BattleDomain/Prefabs/Levels/Level1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2ad7c2b4f7da1654f98d9e98f7bd4085
+    m_Address: Assets/Project/Content/GameDomain/ScreensDomain/BattleDomain/Prefabs/Levels/Level2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b9c39b1648dc8cc47b818f0b0f3e1ef9
+    m_Address: Assets/Project/Content/GameDomain/ScreensDomain/BattleDomain/Prefabs/Levels/Level3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a4e3571bda28de44884dd40f9f60f661, type: 2}
   m_SchemaSet:

@@ -2,7 +2,22 @@
 {
     public class LevelsModel : ILevelsModel
     {
-        public int CurrentLevel { get; set; } = 1;
-        public int TotalLevels { get; set; } = 5;
+        private int _currentLevel = 1;
+
+        public int CurrentLevel
+        {
+            get => _currentLevel;
+            set
+            {
+                _currentLevel = value;
+
+                if (_currentLevel > TotalLevels || _currentLevel < 1)
+                {
+                    _currentLevel = 1;
+                }
+            }
+        }
+
+        public int TotalLevels { get; set; } = 3;
     }
 }
