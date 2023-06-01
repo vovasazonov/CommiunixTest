@@ -85,10 +85,13 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Enemy
 
         private static void DestroyEnemy(IEntity enemy)
         {
-            var view = enemy.Get<ViewComponent>().Value;
-            enemy.Get<ViewComponent>().Value.UnInitialize();
-            ((EntityView)view).gameObject.SetActive(false);
-            enemy.Destroy();
+            if (enemy.Contains<ViewComponent>())
+            {
+                var view = enemy.Get<ViewComponent>().Value;
+                enemy.Get<ViewComponent>().Value.UnInitialize();
+                ((EntityView)view).gameObject.SetActive(false);
+                enemy.Destroy();
+            }
         }
 
         public void BeforeUpdate()
