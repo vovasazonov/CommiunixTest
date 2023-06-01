@@ -6,8 +6,5 @@ namespace Project.CoreDomain.Services.Engine
     {
         event Action Updating;
         event Action FixedUpdating;
-        event Action Destroying;
-        event Action Paused;
-        event Action UnPaused;
     }
 }

@@ -9,9 +9,6 @@ namespace Project.CoreDomain.Services.Engine
     {
         public event Action Updating;
         public event Action FixedUpdating;
-        public event Action Destroying;
-        public event Action Paused;
-        public event Action UnPaused;
 
         private EngineEvent _engineEvent;
 
@@ -34,11 +31,6 @@ namespace Project.CoreDomain.Services.Engine
             FixedUpdating?.Invoke();
         }
 
-        private void Destroy()
-        {
-            Destroying?.Invoke();
-        }
-        
         private class EngineEvent : MonoBehaviour
         {
             private EngineService _engineService;
@@ -56,23 +48,6 @@ namespace Project.CoreDomain.Services.Engine
             private void FixedUpdate()
             {
                 _engineService.FixedUpdate();
-            }
-
-            private void OnDestroy()
-            {
-                _engineService.Destroy();
-            }
-
-            private void OnApplicationPause(bool isPaused)
-            {
-                if (isPaused)
-                {
-                    _engineService.Paused?.Invoke();
-                }
-                else
-                {
-                    _engineService.UnPaused?.Invoke();
-                }
             }
         }
     }
