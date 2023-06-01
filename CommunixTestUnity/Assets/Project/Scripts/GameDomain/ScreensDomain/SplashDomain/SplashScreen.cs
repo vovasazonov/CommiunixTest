@@ -42,10 +42,12 @@ namespace Project.GameDomain.ScreensDomain.SplashDomain
                 await initializable.InitializeAsync();
             }
 
-            var contents = new List<UniTask>();
-            contents.Add(_contentService.LoadAsync<GameObject>(MainScreenContentIds.MenuPrefab));
-            contents.Add(_contentService.LoadAsync<GameObject>(BattleScreenContentIds.BattlePrefab));
-            contents.Add(_contentService.LoadAsync<GameObject>(BattleScreenContentIds.UiPrefab));
+            var contents = new List<UniTask>
+            {
+                _contentService.LoadAsync<GameObject>(MainScreenContentIds.MenuPrefab),
+                _contentService.LoadAsync<GameObject>(BattleScreenContentIds.BattlePrefab),
+                _contentService.LoadAsync<GameObject>(BattleScreenContentIds.UiPrefab)
+            };
 
             await UniTask.WhenAll(contents);
         }
