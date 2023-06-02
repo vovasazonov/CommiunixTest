@@ -2,9 +2,7 @@
 Assets/Project/Content/GameDomain/Scenes/GameScene.unity
 
 **Project architectures:**
-MVP - Model View Presenter (passive view, family of MVC patters)
-
-ECS - Entity Component System
+MVP - Model View Presenter (passive view, family of MVC patters), ECS - Entity Component System
 
 For ECS I used frameworks that I wrote over Entitas framework
 https://github.com/vovasazonov/ecswrapper
