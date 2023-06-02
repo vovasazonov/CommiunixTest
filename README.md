@@ -1,5 +1,7 @@
 **Game entry point:** 
 Assets/Project/Content/GameDomain/Scenes/GameScene.unity
+![image](https://github.com/vovasazonov/CommiunixTest/assets/48253536/54a00c76-1534-4e63-9917-14ef5b331cf9)
+
 
 **Project architectures:**
 MVP - Model View Presenter (passive view, family of MVC patters), ECS - Entity Component System
