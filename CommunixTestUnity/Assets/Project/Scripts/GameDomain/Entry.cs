@@ -14,8 +14,6 @@ namespace Project.GameDomain
         [SerializeField] [Dropdown(nameof(GetScreens) + "()")]
         private string _startScreen;
 
-        [SerializeField] [Space] private GameObject _tempBeforeSplash;
-
         private IScreenInitializable _screenInitializable;
         private IScreensService _screensService;
 
@@ -36,7 +34,6 @@ namespace Project.GameDomain
             _screenInitializable.SetSplashScreen(SplashScreen.Id);
             _screenInitializable.SetLoadingScreen(LoadingScreen.Id);
             await _screensService.SwitchAsync(SplashScreen.Id);
-            Destroy(_tempBeforeSplash);
             _screensService.SwitchAsync(_startScreen).Forget();
         }
     }
