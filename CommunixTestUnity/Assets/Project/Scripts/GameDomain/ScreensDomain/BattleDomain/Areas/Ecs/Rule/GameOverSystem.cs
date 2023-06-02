@@ -35,14 +35,9 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Rule
 
                         var enemyPosition = enemy.Get<PositionComponent>().Value;
                         var enemyProportion = enemy.Get<ProportionComponent>();
-
-                        var isOnX = Vector3.Distance(enemyPosition, new Vector3(playerPosition.x + playerProportion.Width / 2, playerPosition.y)) < enemyProportion.Width / 2 ||
-                                    Vector3.Distance(enemyPosition, new Vector3(playerPosition.x - playerProportion.Width / 2, playerPosition.y)) < enemyProportion.Width / 2;
-                        var isOnY = Vector3.Distance(enemyPosition, new Vector3(playerPosition.x, playerPosition.y + playerProportion.Height / 2)) < enemyProportion.Height / 2 ||
-                                    Vector3.Distance(enemyPosition, new Vector3(playerPosition.x, playerPosition.y - playerProportion.Height / 2)) < enemyProportion.Height / 2;
-
-                        var isEnemyTrigger = isOnX && isOnY;
-
+                        
+                        var isEnemyTrigger = Vector3.Distance(enemyPosition, playerPosition) < enemyProportion.Height/ 2 + playerProportion.Width / 2;
+                        
                         if (isEnemyTrigger)
                         {
                             _battleModel.IsGameOver = true;
@@ -52,5 +47,7 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Rule
                 }
             }
         }
+        
+
     }
 }

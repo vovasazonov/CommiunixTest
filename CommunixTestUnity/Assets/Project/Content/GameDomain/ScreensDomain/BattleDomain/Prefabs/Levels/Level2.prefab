@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 151830948108134298, guid: 148b9bbf10aee834886a08907751023e, type: 3}
       propertyPath: _levels.Array.data[3].Radius
-      value: 0.3
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 151830948108134298, guid: 148b9bbf10aee834886a08907751023e, type: 3}
       propertyPath: _levels.Array.data[3].JumpForce
-      value: 11
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2229335077049038548, guid: 148b9bbf10aee834886a08907751023e, type: 3}
       propertyPath: Direction.x
