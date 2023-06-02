@@ -47,7 +47,5 @@ namespace Project.GameDomain.ScreensDomain.BattleDomain.Areas.Ecs.Rule
                 }
             }
         }
-        
-
     }
 }

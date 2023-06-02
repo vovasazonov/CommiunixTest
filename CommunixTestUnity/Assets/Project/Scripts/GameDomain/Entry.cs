@@ -31,6 +31,7 @@ namespace Project.GameDomain
 
         private async void Start()
         {
+            Application.targetFrameRate = 120;
             _screenInitializable.SetSplashScreen(SplashScreen.Id);
             _screenInitializable.SetLoadingScreen(LoadingScreen.Id);
             await _screensService.SwitchAsync(SplashScreen.Id);
